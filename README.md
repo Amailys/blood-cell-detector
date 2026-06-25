@@ -18,21 +18,23 @@ The full pipeline covers:
 - REST API deployment with FastAPI
 - Interactive web interface with Gradio
 
+<img width="1203" height="715" alt="Capture d’écran 2026-06-25 à 14 05 13" src="https://github.com/user-attachments/assets/c68de73c-0e0f-4c89-8880-b950ffe91ea9" />
+
 ---
 
 ## 🧬 Detected Cell Classes
 
 | ID | Class | Description |
 |----|-------|-------------|
-| 0 | RBC | Red Blood Cells (erythrocytes) |
-| 1 | Eosinophil | Granulocyte with eosinophilic granules |
-| 2 | Basophil | Granulocyte with basophilic granules |
-| 3 | Monocyte | Large mononuclear leukocyte |
-| 4 | Lymphocyte | Mononuclear leukocyte |
-| 5 | Parasitized RBC | Red blood cell infected by a parasite |
-| 6 | Azurophil | Granulocyte specific to reptiles |
-| 7 | Thrombocyte | Platelet equivalent in reptiles |
-| 8 | Heterophil | Reptile equivalent of neutrophils |
+| 0 | RBC | 
+| 1 | Eosinophil | 
+| 2 | Basophil | 
+| 3 | Monocyte | 
+| 4 | Lymphocyte |
+| 5 | Parasitized RBC | 
+| 6 | Azurophil | 
+| 7 | Thrombocyte |
+| 8 | Heterophil | 
 
 ---
 
@@ -59,21 +61,19 @@ Blood smear image
 ## 📁 Project Structure
 
 ```
-blood-cell-detector/
-├── src/
-│   ├── model.py        # Model loading and inference
-│   ├── api.py          # FastAPI endpoints
-├── app.py              # Gradio web interface
-├── requirements.txt
+/
+├── config.py                   # Hyperparameters and paths
+├── train.py                    # YOLOv8 training pipeline
+├── val.py                      # Evaluation
+├── run.py                      # Full experiment runner (multi-seed)
+├── data_yolo.yaml              # Dataset configuration
+├── blood-cell-detector/        # Deployment
+│   ├── src/
+│   │   ├── model.py            # Model loading and inference
+│   │   └── api.py              # FastAPI endpoints
+│   ├── app.py                  # Gradio web interface
+│   └── requirements.txt
 └── README.md
-```
-
-Training and evaluation scripts:
-```
-├── config.py           # Hyperparameters and paths
-├── train.py            # YOLOv8 training pipeline
-├── val.py              # Evaluation (detection + classification metrics)
-└── main.py             # Full experiment runner (multi-seed)
 ```
 
 ---
@@ -99,8 +99,8 @@ The training pipeline runs over multiple seeds for robust evaluation. Metrics ar
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/Amailys/Academic-projects.git
-cd "Academic-projects/Development of an Automatic Cell Recognition System for Lizard Blood Smears"
+git clone https://github.com/Amailys/blood-cell-detector.git
+cd blood-cell-detector
 ```
 
 ### 2. Install dependencies
@@ -121,6 +121,7 @@ MODEL_PATH = "/path/to/your/best.pt"
 ### 4. Start the API
 
 ```bash
+cd blood-cell-detector
 uvicorn src.api:app --reload --port 8000
 ```
 
@@ -129,6 +130,7 @@ uvicorn src.api:app --reload --port 8000
 In a second terminal:
 
 ```bash
+cd blood-cell-detector
 python app.py
 ```
 
@@ -185,10 +187,7 @@ Evaluated on the test set over 5 random seeds (mean ± std).
 | Heterophil | 0.97 ± 0.03 | 0.90 ± 0.04 | 0.93 ± 0.03 | 0.95 ± 0.02 | 0.89 ± 0.02 |
 | **Macro Avg** | **0.69 ± 0.05** | **0.62 ± 0.03** | **0.64 ± 0.04** | **0.66 ± 0.04** | **0.57 ± 0.04** |
 
-> Results averaged over 5 seeds for robustness. High variance on rare classes (Eosinophil, Azurophil) reflects their low representation in the dataset.
-
-The evaluation pipeline (`val.py`) computes separate metrics for detection (localization) and classification, with a NaN-aware macro average to avoid bias from absent classes.
-
+> Results averaged over 5 seeds for robustness. High variance on rare classes (Eosinophil, Azurophil, BAsophil) reflects their low representation in the dataset.
 ---
 
 ## 🔒 Note on Model Weights
