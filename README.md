@@ -1,1 +1,0 @@
-# Development-of-an-Automatic-Cell-Recognition-System-for-Lizard-Blood-Smears
