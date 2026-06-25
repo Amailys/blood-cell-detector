@@ -24,8 +24,8 @@ The full pipeline covers:
 
 ## 🧬 Detected Cell Classes
 
-| ID | Class | Description |
-|----|-------|-------------|
+| ID | Class |
+|----|-------|
 | 0 | RBC | 
 | 1 | Eosinophil | 
 | 2 | Basophil | 
