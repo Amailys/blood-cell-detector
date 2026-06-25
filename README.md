@@ -85,12 +85,12 @@ Blood smear image
 | Architecture | YOLOv8s |
 | Input size | 960 × 960 px |
 | Classes | 9 |
-| Training epochs | 100 |
+| Training epochs | 300 |
 | Confidence threshold | 0.25 |
 | NMS IoU threshold | 0.7 |
 | Training seeds | 5 (7, 42, 99, 123, 2025) |
 
-The training pipeline runs over multiple seeds for robust evaluation. Metrics are reported with mean ± std across seeds, separating detection (localization) and classification performance.
+The training pipeline runs over multiple seeds for robust evaluation. Metrics are reported with mean ± std across seeds.
 
 ---
 
