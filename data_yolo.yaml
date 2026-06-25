@@ -1,0 +1,11 @@
+
+path: /home/amailyss/scai/extra/datasets/split_data
+train: images/train
+val: images/val
+test: images/test
+
+nc: 8 
+names : [
+    'RBC', 'Eosinophil', 'Basophil', 'Monocyte', 'Lymphocyte',
+    'Parasitized RBC', 'Thrombocyte', 'Heterophil'
+]
