@@ -9,6 +9,7 @@ services:
       - "8000:8000"
     volumes:
       - .:/app
+      - /home/amailyss/scai/stage-lizards-iees/models:/app/models
 
   app:
     build: .
