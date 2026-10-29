@@ -1,11 +1,11 @@
 
-path: /home/amailyss/scai/extra/datasets/split_data
+path: /home/amailyss/scai/stage-lizards-iees/datasets/split_data_for_yolo
 train: images/train
 val: images/val
 test: images/test
 
-nc: 8 
+nc: 9 
 names : [
     'RBC', 'Eosinophil', 'Basophil', 'Monocyte', 'Lymphocyte',
-    'Parasitized RBC', 'Thrombocyte', 'Heterophil'
+    'Parasitized RBC', 'Azurophil', 'Thrombocyte', 'Heterophil'
 ]
