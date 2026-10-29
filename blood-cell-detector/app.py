@@ -1,10 +1,11 @@
+import os
 import gradio as gr
 import requests
 import base64
 from PIL import Image
 import io
 
-API_URL = "http://localhost:8000/predict"
+API_URL = os.getenv("API_URL", "http://localhost:8000/predict")
 
 def analyze_image(image):
 
