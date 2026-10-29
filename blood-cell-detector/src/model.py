@@ -3,7 +3,7 @@ from pathlib import Path
 from collections import Counter
 import base64, cv2, numpy as np
 
-MODEL_PATH = "/home/amailyss/scai/stage-lizards-iees/models/yolo_detect_classify/best.pt"
+MODEL_PATH = Path("/app/models/yolo_detect_classify/best.pt")
 
 model = YOLO(MODEL_PATH)
 CLASS_NAMES = model.names
