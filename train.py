@@ -22,7 +22,7 @@ def train_model(
     Returns:
         Path: Path to the best saved weights (best.pt).
     """
-    print(f"🔹 Starting training for seed {seed}...")
+    print(f"Starting training for seed {seed}...")
     print(f"   - Params: {train_params}")
 
     model = YOLO(model_name)
@@ -58,7 +58,7 @@ def train_model(
     )
 
     best_model_path = Path(results.save_dir) / "weights/best.pt"
-    print(f"✓ Training finished for seed {seed}.")
+    print(f"Training finished for seed {seed}.")
     print(f"   - Best model saved at: {best_model_path}")
 
     return best_model_path
