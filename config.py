@@ -1,12 +1,12 @@
 from pathlib import Path
 
-BASE_RESULTS_DIR = Path("/home/amailyss/scai/extra/results")
-DATA_YAML_PATH = Path("/home/amailyss/scai/extra/codes/data_yolo.yaml")
-VAL_IMAGES_PATH = Path("/home/amailyss/scai/extra/datasets/split_data/images/val")
-VAL_LABELS_PATH = Path("/home/amailyss/scai/extra/datasets/split_data/labels/val")
+BASE_RESULTS_DIR = Path("/home/amailyss/scai/stage-lizards-iees/results/yolo_detect_classify_seed")
+DATA_YAML_PATH = Path("/home/amailyss/scai/stage-lizards-iees/codes/yolo_detect_classify/data_yolo.yaml")
+VAL_IMAGES_PATH = Path("/home/amailyss/scai/stage-lizards-iees/datasets/split_data_for_yolo/images/val")
+VAL_LABELS_PATH = Path("/home/amailyss/scai/stage-lizards-iees/datasets/split_data_for_yolo/labels/val")
 
-TEST_IMAGES_PATH = Path("/home/amailyss/scai/extra/datasets/split_data/images/test")
-TEST_LABELS_PATH = Path("/home/amailyss/scai/extra/datasets/split_data/labels/test")
+TEST_IMAGES_PATH = Path("/home/amailyss/scai/stage-lizards-iees/datasets/split_data_for_yolo/images/test")
+TEST_LABELS_PATH = Path("/home/amailyss/scai/stage-lizards-iees/datasets/split_data_for_yolo/labels/test")
 
 
 EXP_NAME = "train"
