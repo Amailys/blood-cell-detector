@@ -4,7 +4,7 @@ from src.model import predict
 
 app = FastAPI(
     title="Blood Cell Detector API",
-    description="Détection et classification de cellules sanguines sur frottis",
+    description="Blood cell detection and classification",
     version="1.0.0"
 )
 
@@ -25,9 +25,8 @@ def health():
 
 @app.post("/predict")
 async def predict_endpoint(file: UploadFile = File(...)):
-    # Vérifier que c'est bien une image
     if not file.content_type.startswith("image/"):
-        raise HTTPException(status_code=400, detail="Le fichier doit être une image")
+        raise HTTPException(status_code=400, detail="File must be an image")
 
     image_bytes = await file.read()
     result = predict(image_bytes)
