@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    container_name: blood_cell_api
+    command: uvicorn src.api:app --host 0.0.0.0 --port 8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+
+  app:
+    build: .
+    container_name: blood_cell_gradio
+    command: python app.py
+    ports:
+      - "7860:7860"
+    environment:
+      - API_URL=http://api:8000/predict
+    volumes:
+      - .:/app
+    depends_on:
+      - api
