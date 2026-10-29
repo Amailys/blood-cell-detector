@@ -7,3 +7,5 @@ gradio
 requests
 Pillow
 numpy
+torch
+pandas
