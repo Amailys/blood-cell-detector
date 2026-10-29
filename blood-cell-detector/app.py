@@ -7,12 +7,14 @@ import io
 API_URL = "http://localhost:8000/predict"
 
 def analyze_image(image):
-    # Convert Gradio image to bytes
+
+    if image is None:
+        return None, "Please upload an image first."
+
     img_bytes = io.BytesIO()
     image.save(img_bytes, format="JPEG")
     img_bytes.seek(0)
 
-    # Call the API
     response = requests.post(
         API_URL,
         files={"file": ("image.jpg", img_bytes, "image/jpeg")}
@@ -23,11 +25,9 @@ def analyze_image(image):
 
     data = response.json()
 
-    # Decode annotated image
     img_data = base64.b64decode(data["annotated_image"])
     annotated = Image.open(io.BytesIO(img_data))
 
-    # Format summary
     summary = f"**Total cells detected: {data['total_cells']}**\n"
     summary += f"Mean confidence: {data['mean_confidence']:.1%}\n\n"
     summary += "**Count per class:**\n"
@@ -38,7 +38,7 @@ def analyze_image(image):
     return annotated, summary
 
 with gr.Blocks(title="Blood Cell Detector") as demo:
-    gr.Markdown("# 🔬 Blood Cell Detector")
+    gr.Markdown("# Blood Cell Detector")
     gr.Markdown("Upload a blood smear image to detect and classify blood cells.")
 
     with gr.Row():
