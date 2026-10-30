@@ -7,7 +7,7 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - MODEL_PATH=/app/models/best.pt
+      - MODEL_PATH=/app/models/yolo_detect_classify/best.pt
     volumes:
       - ./models:/app/models:ro
     restart: unless-stopped
@@ -21,6 +21,7 @@ services:
       - "7860:7860"
     environment:
       - API_URL=http://api:8000/predict
+      - GRADIO_SERVER_NAME=0.0.0.0
     depends_on:
       - api
     restart: unless-stopped
