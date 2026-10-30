@@ -7,19 +7,24 @@ import io
 
 API_URL = os.getenv("API_URL", "http://localhost:8000/predict")
 
+
 def analyze_image(image):
 
     if image is None:
         return None, "Please upload an image first."
 
     img_bytes = io.BytesIO()
-    image.save(img_bytes, format="JPEG")
+    image.convert("RGB").save(img_bytes, format="JPEG")
     img_bytes.seek(0)
 
-    response = requests.post(
-        API_URL,
-        files={"file": ("image.jpg", img_bytes, "image/jpeg")}
-    )
+    try:
+        response = requests.post(
+            API_URL,
+            files={"file": ("image.jpg", img_bytes, "image/jpeg")},
+            timeout=120,
+        )
+    except requests.exceptions.RequestException as e:
+        return None, f"Could not reach the API: {e}"
 
     if response.status_code != 200:
         return None, f"API error: {response.text}"
@@ -37,6 +42,7 @@ def analyze_image(image):
         summary += f"- {cls_name}: {count} ({pct:.1f}%)\n"
 
     return annotated, summary
+
 
 with gr.Blocks(title="Blood Cell Detector") as demo:
     gr.Markdown("# Blood Cell Detector")
@@ -57,4 +63,4 @@ with gr.Blocks(title="Blood Cell Detector") as demo:
     )
 
 if __name__ == "__main__":
-    demo.launch(inbrowser=True)
+    demo.launch(server_name="0.0.0.0", server_port=7860)
