@@ -187,7 +187,7 @@ Evaluated on the test set over 5 random seeds (mean ± std).
 | Heterophil | 0.97 ± 0.03 | 0.90 ± 0.04 | 0.93 ± 0.03 | 0.95 ± 0.02 | 0.89 ± 0.02 |
 | **Macro Avg** | **0.69 ± 0.05** | **0.62 ± 0.03** | **0.64 ± 0.04** | **0.66 ± 0.04** | **0.57 ± 0.04** |
 
-> Results averaged over 5 seeds for robustness. High variance on rare classes (Eosinophil, Azurophil, BAsophil) reflects their low representation in the dataset.
+> Results averaged over 5 seeds for robustness. High variance on rare classes (Eosinophil, Azurophil, Basophil) reflects their low representation in the dataset.
 ---
 
 ## 🔒 Note on Model Weights
