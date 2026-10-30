@@ -1,6 +1,10 @@
 __pycache__/
 .venv/
+venv/
 myenv/
 .idea/
 .vscode/
 *.pyc
+models/
+*.pt
+*.pem
